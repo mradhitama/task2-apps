@@ -3,9 +3,9 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<modules>
-		<module>rakaelpos-producer-database</module>
-		<module>rakaelpos-consumer-redis</module>
-		<module>rakaelpos-consumer-elasticsearch</module>
+		<module>rekaelpos-producer-database</module>
+		<module>rekaelpos-consumer-redis</module>
+		<module>rekaelpos-consumer-elasticsearch</module>
 	</modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -19,9 +19,11 @@
 	<name>rakaelpos</name>
 	<description>Demo project for Spring Boot implement Redis, Kafka, Elasticsearch, and Postgresql</description>
 	<packaging>pom</packaging>
-	<properties>
-		<java.version>20</java.version>
-	</properties>
+    <properties>
+        <java.version>20</java.version>
+        <maven.compiler.source>19</maven.compiler.source>
+        <maven.compiler.target>19</maven.compiler.target>
+    </properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

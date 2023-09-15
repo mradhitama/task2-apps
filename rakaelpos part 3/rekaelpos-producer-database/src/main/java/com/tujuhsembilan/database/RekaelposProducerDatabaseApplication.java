@@ -1,11 +1,11 @@
-package com.tujuhsembilan.elasticsearch;
+package com.tujuhsembilan.database;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class RakaelposConsumerElasticsearchApplication {
+public class RekaelposProducerDatabaseApplication {
     public static void main(String[] args){
-        SpringApplication.run(RakaelposConsumerElasticsearchApplication.class);
+        SpringApplication.run(RekaelposProducerDatabaseApplication.class);
     }
 }
