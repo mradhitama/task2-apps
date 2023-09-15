@@ -1,7 +1,7 @@
 package com.tujuhsembilan.elasticsearch.services;
 
-import com.tujuhsembilan.database.models.MessageTemplate;
 import com.tujuhsembilan.elasticsearch.models.ESCustomer;
+import com.tujuhsembilan.elasticsearch.models.MessageTemplate;
 import com.tujuhsembilan.elasticsearch.repositories.ESCustomerRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,7 +1,7 @@
 package com.tujuhsembilan.redis.services;
 
-import com.tujuhsembilan.database.models.CustomerData;
-import com.tujuhsembilan.database.models.MessageTemplate;
+import com.tujuhsembilan.redis.models.CustomerData;
+import com.tujuhsembilan.redis.models.MessageTemplate;
 
 import java.util.List;
 

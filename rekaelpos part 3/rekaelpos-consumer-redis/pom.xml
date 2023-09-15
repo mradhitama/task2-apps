@@ -29,12 +29,6 @@
             <artifactId>jedis</artifactId>
             <version>5.0.0</version>
         </dependency>
-        <dependency>
-            <groupId>com.tujuhsembilan</groupId>
-            <artifactId>rekaelpos</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
     </dependencies>
 
 </project>
