@@ -1,8 +1,9 @@
-package com.tujuhsembilan.rakaelpos.services;
+package com.tujuhsembilan.database.services;
 
-import com.tujuhsembilan.rakaelpos.models.Customer;
-import com.tujuhsembilan.rakaelpos.models.MessageTemplate;
-import com.tujuhsembilan.rakaelpos.repositories.CustomerRepository;
+import com.tujuhsembilan.database.models.Customer;
+import com.tujuhsembilan.database.models.CustomerData;
+import com.tujuhsembilan.database.models.MessageTemplate;
+import com.tujuhsembilan.database.repositories.CustomerRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,11 +54,12 @@ public class CustomerServiceImpl implements CustomerService{
             throw new IllegalArgumentException("Customer with the same name already exists");
         }
         Customer newCustomer = customerRepository.saveAndFlush(customer);
-        MessageTemplate messageTemplate = new MessageTemplate("POST", newCustomer);
+        CustomerData customerData = new CustomerData(newCustomer.getId(), newCustomer.getName());
+        MessageTemplate messageTemplate = new MessageTemplate("POST", customerData);
         LOGGER.info(String.format("Request to store data -> %s", newCustomer.toString()));
         Message<MessageTemplate> message = MessageBuilder
                 .withPayload(messageTemplate)
-                .setHeader(KafkaHeaders.TOPIC, "customerTopic")
+                .setHeader(KafkaHeaders.TOPIC, "topic-customer")
                 .build();
         kafkaTemplate.send(message);
         return newCustomer;
@@ -67,11 +69,12 @@ public class CustomerServiceImpl implements CustomerService{
     public void updateCustomer(Customer customer, Long id) {
         try {
             Customer newCustomer = customerRepository.save(customer);
-            MessageTemplate messageTemplate = new MessageTemplate("PUT", newCustomer);
+            CustomerData customerData = new CustomerData(customer.getId(), customer.getName());
+            MessageTemplate messageTemplate = new MessageTemplate("PUT", customerData);
             LOGGER.info(String.format("Request to update data -> %s", newCustomer.toString()));
             Message<MessageTemplate> message = MessageBuilder
                     .withPayload(messageTemplate)
-                    .setHeader(KafkaHeaders.TOPIC, "customerTopic")
+                    .setHeader(KafkaHeaders.TOPIC, "topic-customer")
                     .build();
             kafkaTemplate.send(message);
         } catch (Exception e) {
@@ -83,12 +86,12 @@ public class CustomerServiceImpl implements CustomerService{
     public Boolean deleteCustomer(Long id) {
         try {
             customerRepository.deleteById(id);
-            Customer customer = new Customer(id, null);
-            MessageTemplate messageTemplate = new MessageTemplate("DELETE", customer);
-            LOGGER.info(String.format("Request to delete data with id -> %s", customer.getId()));
+            CustomerData customerData = new CustomerData(id, null);
+            MessageTemplate messageTemplate = new MessageTemplate("DELETE", customerData);
+            LOGGER.info(String.format("Request to delete data with id -> %s", id));
             Message<MessageTemplate> message = MessageBuilder
                     .withPayload(messageTemplate)
-                    .setHeader(KafkaHeaders.TOPIC, "customerTopic")
+                    .setHeader(KafkaHeaders.TOPIC, "topic-customer")
                     .build();
             kafkaTemplate.send(message);
             return true;

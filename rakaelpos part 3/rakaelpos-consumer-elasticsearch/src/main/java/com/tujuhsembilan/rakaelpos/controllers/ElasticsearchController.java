@@ -14,12 +14,12 @@ import java.util.Map;
 public class ElasticsearchController {
 
     @Autowired
-    ESCustomerService customerServices;
+    ESCustomerService esCustomerService;
 
     @GetMapping("/getAllESCustomer")
     @ResponseBody
     public ResponseEntity<?> getAllESCustomerData() {
-        Iterable<ESCustomer> customerList = customerServices.getAllESCustomer();
+        Iterable<ESCustomer> customerList = esCustomerService.getAllESCustomer();
         Map<String, Object> response = new HashMap<>();
         response.put("status", "success");
         response.put("message", "Customer loaded successfully");
@@ -30,7 +30,7 @@ public class ElasticsearchController {
     @GetMapping("/getESCustomer/{id}")
     @ResponseBody
     public ResponseEntity<?> getESCustomerData(@PathVariable Long id) {
-        ESCustomer customer = customerServices.getESCustomer(id);
+        ESCustomer customer = esCustomerService.getESCustomer(id);
         Map<String, Object> response = new HashMap<>();
         response.put("status", "success");
         response.put("message", "Customer with ID " + id + " loaded successfully");

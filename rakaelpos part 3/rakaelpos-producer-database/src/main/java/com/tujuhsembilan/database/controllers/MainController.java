@@ -1,7 +1,7 @@
-package com.tujuhsembilan.rakaelpos.controllers;
+package com.tujuhsembilan.database.controllers;
 
-import com.tujuhsembilan.rakaelpos.models.Customer;
-import com.tujuhsembilan.rakaelpos.services.CustomerService;
+import com.tujuhsembilan.database.models.Customer;
+import com.tujuhsembilan.database.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

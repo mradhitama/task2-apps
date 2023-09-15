@@ -1,4 +1,4 @@
-package com.tujuhsembilan.rakaelpos.models;
+package com.tujuhsembilan.database.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,5 +9,5 @@ import lombok.NoArgsConstructor;
 @Data
 public class MessageTemplate {
     private String method;
-    private Customer customer;
+    private CustomerData customer;
 }

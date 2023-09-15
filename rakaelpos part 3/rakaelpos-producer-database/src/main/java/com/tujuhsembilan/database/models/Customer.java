@@ -1,4 +1,4 @@
-package com.tujuhsembilan.rakaelpos.models;
+package com.tujuhsembilan.database.models;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

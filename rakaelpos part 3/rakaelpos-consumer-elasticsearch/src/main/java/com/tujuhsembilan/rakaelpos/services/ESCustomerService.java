@@ -1,7 +1,7 @@
 package com.tujuhsembilan.rakaelpos.services;
 
+import com.tujuhsembilan.database.models.MessageTemplate;
 import com.tujuhsembilan.rakaelpos.models.ESCustomer;
-import com.tujuhsembilan.rakaelpos.models.MessageTemplate;
 
 public interface ESCustomerService {
 

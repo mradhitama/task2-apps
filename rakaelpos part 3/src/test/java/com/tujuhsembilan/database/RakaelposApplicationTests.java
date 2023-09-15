@@ -1,4 +1,4 @@
-package com.tujuhsembilan.rakaelpos;
+package com.tujuhsembilan.database;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

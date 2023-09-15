@@ -1,6 +1,6 @@
-package com.tujuhsembilan.rakaelpos.services;
+package com.tujuhsembilan.database.services;
 
-import com.tujuhsembilan.rakaelpos.models.Customer;
+import com.tujuhsembilan.database.models.Customer;
 
 import java.util.List;
 

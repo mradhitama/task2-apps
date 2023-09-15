@@ -1,11 +1,12 @@
 package com.tujuhsembilan.rakaelpos.services;
 
+import com.tujuhsembilan.database.models.MessageTemplate;
 import com.tujuhsembilan.rakaelpos.models.ESCustomer;
-import com.tujuhsembilan.rakaelpos.models.MessageTemplate;
 import com.tujuhsembilan.rakaelpos.repositories.ESCustomerRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -20,6 +21,7 @@ public class ESCustomerServiceImpl implements ESCustomerService {
 
 
     @Override
+    @KafkaListener(topics = "topic-customer", groupId = "consumerGroup")
     public void manageCustomer(MessageTemplate messageTemplate) {
         LOGGER.info(String.format("Message Received -> %s", messageTemplate.toString()));
         String method = messageTemplate.getMethod();

@@ -1,6 +1,6 @@
-package com.tujuhsembilan.rakaelpos.repositories;
+package com.tujuhsembilan.database.repositories;
 
-import com.tujuhsembilan.rakaelpos.models.Customer;
+import com.tujuhsembilan.database.models.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

@@ -1,7 +1,7 @@
-package com.tujuhsembilan.rakaelpos.controllers;
+package com.tujuhsembilan.redis.controllers;
 
-import com.tujuhsembilan.rakaelpos.models.Customer;
-import com.tujuhsembilan.rakaelpos.services.RCustomerServices;
+import com.tujuhsembilan.database.models.CustomerData;
+import com.tujuhsembilan.redis.services.RCustomerServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +20,7 @@ public class RedisController {
     @GetMapping("/getAllRedisCustomer")
     @ResponseBody
     public ResponseEntity<?> getAllRedisCustomerData() {
-        List<Customer> customerList = rCustomerServices.getAllRedisCustomer();
+        List<CustomerData> customerList = rCustomerServices.getAllRedisCustomer();
         Map<String, Object> response = new HashMap<>();
         response.put("status", "success");
         response.put("message", "Customer loaded successfully");
@@ -31,7 +31,7 @@ public class RedisController {
     @GetMapping("/getRedisCustomer/{id}")
     @ResponseBody
     public ResponseEntity<?> getRedisCustomerData(@PathVariable Long id) {
-        Customer customer = rCustomerServices.getRedisCustomer(id);
+        CustomerData customer = rCustomerServices.getRedisCustomer(id);
         Map<String, Object> response = new HashMap<>();
         response.put("status", "success");
         response.put("message", "Customer with ID " + id + " loaded successfully");

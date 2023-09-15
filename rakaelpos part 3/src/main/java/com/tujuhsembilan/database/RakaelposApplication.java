@@ -1,4 +1,4 @@
-package com.tujuhsembilan.rakaelpos;
+package com.tujuhsembilan.database;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
