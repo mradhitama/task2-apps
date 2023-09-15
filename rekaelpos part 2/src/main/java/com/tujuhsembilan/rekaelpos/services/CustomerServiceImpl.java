@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 @Service
 public class CustomerServiceImpl implements CustomerServices{
@@ -54,7 +55,7 @@ public class CustomerServiceImpl implements CustomerServices{
         //redis
         redisTemplate.opsForHash().put(KEY, newCustomer.getId(), newCustomer);
         //elasticsearch
-        ESCustomer esCustomer = new ESCustomer(newCustomer.getId(), newCustomer.getName());
+        ESCustomer esCustomer = new ESCustomer(newCustomer.getId(), newCustomer.getName(), newCustomer.getAge());
         customerESRepository.save(esCustomer);
         return newCustomer;
     }
@@ -64,9 +65,9 @@ public class CustomerServiceImpl implements CustomerServices{
         try {
             Customer newCustomer = customerRepository.save(customer);
             //redis
-            redisTemplate.opsForHash().put(KEY, id, customer);
+            redisTemplate.opsForHash().put(KEY, id, newCustomer);
             //elasticsearch
-            ESCustomer esCustomer = new ESCustomer(newCustomer.getId(), newCustomer.getName());
+            ESCustomer esCustomer = new ESCustomer(newCustomer.getId(), newCustomer.getName(), newCustomer.getAge());
             customerESRepository.save(esCustomer);
         } catch (Exception e) {
             e.printStackTrace();

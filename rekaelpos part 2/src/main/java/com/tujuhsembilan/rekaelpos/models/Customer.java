@@ -16,12 +16,16 @@ public class Customer {
     @Column(name="name", nullable = false)
     private String name;
 
+    @Column(name="age", nullable = false)
+    private Integer age;
+
     public Customer() {
     }
 
-    public Customer(Long id, String name) {
+    public Customer(Long id, String name, Integer age) {
         this.id = id;
         this.name = name;
+        this.age = age;
     }
 
     public Long getId() {
@@ -38,5 +42,13 @@ public class Customer {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
     }
 }

@@ -12,4 +12,5 @@ import org.springframework.data.elasticsearch.annotations.Document;
 public class ESCustomer {
     private Long id;
     private String name;
+    private Integer age;
 }
