@@ -20,6 +20,9 @@ public class Customer {
     @Column(name="name", nullable = false)
     private String name;
 
+    @Column(name="age", nullable = false)
+    private String age;
+
     public Long getId() {
         return id;
     }
@@ -35,4 +38,8 @@ public class Customer {
     public void setName(String name) {
         this.name = name;
     }
+
+    public String getAge() { return age; }
+
+    public void setAge(String age) { this.age = age; }
 }
