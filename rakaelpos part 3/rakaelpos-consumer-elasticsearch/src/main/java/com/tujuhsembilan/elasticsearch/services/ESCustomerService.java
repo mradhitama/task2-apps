@@ -1,7 +1,7 @@
-package com.tujuhsembilan.rakaelpos.services;
+package com.tujuhsembilan.elasticsearch.services;
 
 import com.tujuhsembilan.database.models.MessageTemplate;
-import com.tujuhsembilan.rakaelpos.models.ESCustomer;
+import com.tujuhsembilan.elasticsearch.models.ESCustomer;
 
 public interface ESCustomerService {
 

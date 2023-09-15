@@ -1,8 +1,8 @@
-package com.tujuhsembilan.rakaelpos.services;
+package com.tujuhsembilan.elasticsearch.services;
 
 import com.tujuhsembilan.database.models.MessageTemplate;
-import com.tujuhsembilan.rakaelpos.models.ESCustomer;
-import com.tujuhsembilan.rakaelpos.repositories.ESCustomerRepository;
+import com.tujuhsembilan.elasticsearch.models.ESCustomer;
+import com.tujuhsembilan.elasticsearch.repositories.ESCustomerRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

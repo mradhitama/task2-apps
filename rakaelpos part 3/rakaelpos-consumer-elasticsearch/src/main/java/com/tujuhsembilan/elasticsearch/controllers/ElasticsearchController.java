@@ -1,7 +1,7 @@
-package com.tujuhsembilan.rakaelpos.controllers;
+package com.tujuhsembilan.elasticsearch.controllers;
 
-import com.tujuhsembilan.rakaelpos.models.ESCustomer;
-import com.tujuhsembilan.rakaelpos.services.ESCustomerService;
+import com.tujuhsembilan.elasticsearch.models.ESCustomer;
+import com.tujuhsembilan.elasticsearch.services.ESCustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

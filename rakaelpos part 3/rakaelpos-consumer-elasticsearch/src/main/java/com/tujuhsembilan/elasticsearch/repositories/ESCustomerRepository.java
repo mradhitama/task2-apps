@@ -1,8 +1,7 @@
-package com.tujuhsembilan.rakaelpos.repositories;
+package com.tujuhsembilan.elasticsearch.repositories;
 
-import com.tujuhsembilan.rakaelpos.models.ESCustomer;
+import com.tujuhsembilan.elasticsearch.models.ESCustomer;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
-import org.springframework.stereotype.Repository;
 
 public interface ESCustomerRepository extends ElasticsearchRepository<ESCustomer, Long> {
 }
