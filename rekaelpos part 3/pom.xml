@@ -11,12 +11,12 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.1.3</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath/>
 	</parent>
 	<groupId>com.tujuhsembilan</groupId>
-	<artifactId>rakaelpos</artifactId>
+	<artifactId>rekaelpos</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>rakaelpos</name>
+	<name>rekaelpos</name>
 	<description>Demo project for Spring Boot implement Redis, Kafka, Elasticsearch, and Postgresql</description>
 	<packaging>pom</packaging>
     <properties>
