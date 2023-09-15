@@ -52,7 +52,7 @@ public class CustomerServiceImpl implements CustomerServices{
         }
         Customer newCustomer = customerRepository.saveAndFlush(customer);
         //redis
-//        redisTemplate.opsForHash().put(KEY, newCustomer.getId(), newCustomer);
+        redisTemplate.opsForHash().put(KEY, newCustomer.getId(), newCustomer);
         //elasticsearch
         ESCustomer esCustomer = new ESCustomer(newCustomer.getId(), newCustomer.getName());
         customerESRepository.save(esCustomer);
@@ -63,7 +63,11 @@ public class CustomerServiceImpl implements CustomerServices{
     public void updateCustomer(Customer customer, Long id) {
         try {
             Customer newCustomer = customerRepository.save(customer);
-//            redisTemplate.opsForHash().put(KEY, id, customer);
+            //redis
+            redisTemplate.opsForHash().put(KEY, id, customer);
+            //elasticsearch
+            ESCustomer esCustomer = new ESCustomer(newCustomer.getId(), newCustomer.getName());
+            customerESRepository.save(esCustomer);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -73,7 +77,9 @@ public class CustomerServiceImpl implements CustomerServices{
     public Boolean deleteCustomer(Long id) {
         try {
             customerRepository.deleteById(id);
+            //redis
             redisTemplate.opsForHash().delete(KEY,id);
+            //elasticsearch
             customerESRepository.deleteById(id);
             return true;
         } catch (Exception e) {
