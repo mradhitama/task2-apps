@@ -1,4 +1,4 @@
-package com.tujuhsembilan.elasticsearch.models;
+package com.tujuhsembilan.rekaelpos.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

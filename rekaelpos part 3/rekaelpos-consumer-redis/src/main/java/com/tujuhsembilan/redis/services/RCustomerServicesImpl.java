@@ -1,7 +1,7 @@
 package com.tujuhsembilan.redis.services;
 
-import com.tujuhsembilan.redis.models.CustomerData;
-import com.tujuhsembilan.redis.models.MessageTemplate;
+import com.tujuhsembilan.database.models.CustomerData;
+import com.tujuhsembilan.database.models.MessageTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,11 +26,14 @@ public class RCustomerServicesImpl implements RCustomerServices {
     public void manageCustomer(MessageTemplate messageTemplate) {
         LOGGER.info(String.format("Message Received -> %s", messageTemplate.toString()));
         String method = messageTemplate.getMethod();
-        CustomerData customerData = new CustomerData(messageTemplate.getCustomer().getId(), messageTemplate.getCustomer().getName());
+        CustomerData customerData = new CustomerData();
+        customerData.setId(messageTemplate.getCustomer().getId());
+        customerData.setName(messageTemplate.getCustomer().getName());
+        customerData.setAge(messageTemplate.getCustomer().getAge());
         if(method.equals("POST") || method.equals("PUT")){
-            redisTemplate.opsForHash().put(KEY, customerData.getId(), customerData.getName());
+            redisTemplate.opsForHash().put(KEY, customerData.getId(), customerData);
         } else if (method.equals("DELETE")){
-            redisTemplate.opsForHash().delete(KEY, messageTemplate.getCustomer().getId());
+            redisTemplate.opsForHash().delete(KEY, customerData.getId());
         }
     }
 

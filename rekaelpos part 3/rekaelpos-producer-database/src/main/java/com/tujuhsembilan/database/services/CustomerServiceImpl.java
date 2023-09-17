@@ -4,6 +4,7 @@ import com.tujuhsembilan.database.models.Customer;
 import com.tujuhsembilan.database.models.CustomerData;
 import com.tujuhsembilan.database.models.MessageTemplate;
 import com.tujuhsembilan.database.repositories.CustomerRepository;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,7 +55,7 @@ public class CustomerServiceImpl implements CustomerService{
             throw new IllegalArgumentException("Customer with the same name already exists");
         }
         Customer newCustomer = customerRepository.saveAndFlush(customer);
-        CustomerData customerData = new CustomerData(newCustomer.getId(), newCustomer.getName());
+        CustomerData customerData = new CustomerData(newCustomer.getId(), newCustomer.getName(), newCustomer.getAge());
         MessageTemplate messageTemplate = new MessageTemplate("POST", customerData);
         LOGGER.info(String.format("Request to store data -> %s", newCustomer.toString()));
         Message<MessageTemplate> message = MessageBuilder
@@ -69,7 +70,7 @@ public class CustomerServiceImpl implements CustomerService{
     public void updateCustomer(Customer customer, Long id) {
         try {
             Customer newCustomer = customerRepository.save(customer);
-            CustomerData customerData = new CustomerData(customer.getId(), customer.getName());
+            CustomerData customerData = new CustomerData(newCustomer.getId(), newCustomer.getName(), newCustomer.getAge());
             MessageTemplate messageTemplate = new MessageTemplate("PUT", customerData);
             LOGGER.info(String.format("Request to update data -> %s", newCustomer.toString()));
             Message<MessageTemplate> message = MessageBuilder
@@ -86,7 +87,7 @@ public class CustomerServiceImpl implements CustomerService{
     public Boolean deleteCustomer(Long id) {
         try {
             customerRepository.deleteById(id);
-            CustomerData customerData = new CustomerData(id, null);
+            CustomerData customerData = new CustomerData(id, null, null);
             MessageTemplate messageTemplate = new MessageTemplate("DELETE", customerData);
             LOGGER.info(String.format("Request to delete data with id -> %s", id));
             Message<MessageTemplate> message = MessageBuilder

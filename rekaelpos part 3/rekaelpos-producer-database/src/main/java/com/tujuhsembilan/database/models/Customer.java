@@ -21,7 +21,7 @@ public class Customer {
     private String name;
 
     @Column(name="age", nullable = false)
-    private String age;
+    private Integer age;
 
     public Long getId() {
         return id;
@@ -39,7 +39,7 @@ public class Customer {
         this.name = name;
     }
 
-    public String getAge() { return age; }
+    public Integer getAge() { return age; }
 
-    public void setAge(String age) { this.age = age; }
+    public void setAge(Integer age) { this.age = age; }
 }

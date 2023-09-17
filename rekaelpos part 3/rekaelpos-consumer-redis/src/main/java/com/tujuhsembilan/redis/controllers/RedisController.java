@@ -1,6 +1,6 @@
 package com.tujuhsembilan.redis.controllers;
 
-import com.tujuhsembilan.redis.models.CustomerData;
+import com.tujuhsembilan.database.models.CustomerData;
 import com.tujuhsembilan.redis.services.RCustomerServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

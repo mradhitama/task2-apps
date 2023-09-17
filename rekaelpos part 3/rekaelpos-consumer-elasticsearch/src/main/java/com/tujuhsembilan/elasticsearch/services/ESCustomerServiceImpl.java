@@ -1,7 +1,7 @@
 package com.tujuhsembilan.elasticsearch.services;
 
+import com.tujuhsembilan.database.models.MessageTemplate;
 import com.tujuhsembilan.elasticsearch.models.ESCustomer;
-import com.tujuhsembilan.elasticsearch.models.MessageTemplate;
 import com.tujuhsembilan.elasticsearch.repositories.ESCustomerRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,17 +19,20 @@ public class ESCustomerServiceImpl implements ESCustomerService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ESCustomerServiceImpl.class);
 
-
     @Override
     @KafkaListener(topics = "topic-customer", groupId = "consumerGroup")
     public void manageCustomer(MessageTemplate messageTemplate) {
         LOGGER.info(String.format("Message Received -> %s", messageTemplate.toString()));
         String method = messageTemplate.getMethod();
+        ESCustomer esCustomer = new ESCustomer();
+        esCustomer.setId(messageTemplate.getCustomer().getId());
+        esCustomer.setName(messageTemplate.getCustomer().getName());
+        esCustomer.setAge(messageTemplate.getCustomer().getAge());
+        LOGGER.info(String.format("Customer Ready -> %s", esCustomer.toString()));
         if(method.equals("POST") || method.equals("PUT")){
-            ESCustomer esCustomer = new ESCustomer(messageTemplate.getCustomer().getId(), messageTemplate.getCustomer().getName());
             esCustomerRepository.save(esCustomer);
         } else if (method.equals("DELETE")){
-            esCustomerRepository.deleteById(messageTemplate.getCustomer().getId());
+            esCustomerRepository.deleteById(esCustomer.getId());
         }
     }
 
